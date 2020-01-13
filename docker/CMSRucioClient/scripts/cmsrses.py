@@ -255,6 +255,9 @@ class CMSRSE(object):
 
         domains = domains or DOMAINS_BYTYPE[self.rsetype]
 
+        if not re.match(r"^.*/$", seinfo['hostname']) and 'webpath' not in seinfo:
+            seinfo['hostname'] = seinfo['hostname']].strip() + "/"
+        
         self.proto = {
             'scheme': seinfo['protocol'],
             'hostname': seinfo['hostname'],
